@@ -1,0 +1,26 @@
+body {
+}
+
+header {
+  background-color: #d7e5ca;
+}
+
+nav {
+  background-color: #8eaccd;
+}
+
+main {
+  background-color: #d2e0fb;
+}
+
+footer {
+  background-color: #f9f3cc;
+}
+
+footer ul {
+    text-align: center;
+}
+
+footer li {
+    display: inline-block;
+}

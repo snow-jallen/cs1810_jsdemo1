@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    height: 3em;
+  }
+  
+  nav {
+    width: 10em;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  footer {
+    height: 3em;  
+  }
+  
+  .pageContainer {
+      display: flex; /* my children will obey flex rules */
+      flex-direction: row; /* my children will be laid out horizontally */
+      flex: 1;
+  }
+  
+  .mainContainer {
+      display: flex;
+      flex-direction: column;
+      flex: 1; /*As a child of another flex parent, I will grow.*/
+  }
