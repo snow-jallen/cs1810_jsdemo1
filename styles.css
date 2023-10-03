@@ -2,6 +2,10 @@
 
 :root {
   --border-radius: 2em;
+  --color-emphasis: #d7e5ca;
+  --color-emphasis-secondary: #f9f3cc;
+  --color-dark: #8eaccd;
+  --color-primary: #d2e0fb;
   font-family: "Kanit", sans-serif;
 }
 body {
@@ -13,17 +17,16 @@ body {
 }
 
 header {
-  height: 3em;
-  background-color: #d7e5ca;
+  background-color: var(--color-emphasis);
 }
 
 nav {
   width: 10em;
-  background-color: #8eaccd;
+  background-color: var(--color-dark);
 }
 
 main {
-  background-color: #d2e0fb;
+  background-color: var(--color-primary);
   flex: 1;
   padding-left: 8em;
   padding-right: 8em;
@@ -31,7 +34,7 @@ main {
 
 footer {
   height: 3em;
-  background-color: #f9f3cc;
+  background-color: var(--color-emphasis-secondary);
 }
 
 footer ul {
@@ -90,6 +93,10 @@ h1 {
 .card-text {
   flex: 1;
   padding: 1em;
+}
+
+.card-selected {
+  background-color: var(--color-dark) !important;
 }
 
 

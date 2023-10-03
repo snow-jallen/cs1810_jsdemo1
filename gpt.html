@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Page - Recreate this in JS</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="layout.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      const animalData = [
+        {
+          imageSrc: "/images/giraffe.jpeg",
+          altText: "giraffe",
+          title: "This is a Giraffe",
+          description:
+            "According to wikipedia: The giraffe's chief distinguishing characteristics are its extremely long neck and legs, its horn-like ossicones, and its spotted coat patterns...",
+        },
+        {
+          imageSrc: "/images/lion.jpg",
+          altText: "lion",
+          title: "This is a Lion",
+          description:
+            "According to wikipedia: The lion (Panthera leo) is a large cat of the genus Panthera native to Africa and India. It has a muscular, broad-chested body; short, rounded head; round ears; and a hairy tuft at the end of its tail...",
+        },
+        {
+          imageSrc: "/images/zebra.jpg",
+          altText: "zebra",
+          title: "This is a Zebra",
+          description:
+            "According to wikipedia: Zebras are primarily grazers and can subsist on lower-quality vegetation. They are preyed on mainly by lions, and typically flee when threatened but also bite and kick...",
+        },
+        {
+          imageSrc: "/images/elephant.jpg",
+          altText: "elephant",
+          title: "This is an Elephant",
+          description:
+            "According to wikipedia: Elephants are scattered throughout sub-Saharan Africa, South Asia, and Southeast Asia and are found in different habitats, including savannahs, forests, deserts, and marshes...",
+        },
+        {
+          imageSrc: "/images/waterBuffalo.jpg",
+          altText: "water buffalo",
+          title: "This is a Water Buffalo",
+          description:
+            "According to wikipedia: Water buffalo (Bubalus bubalis), also called the domestic water buffalo or Asian water buffalo, is a large bovid originating in the Indian subcontinent and Southeast Asia...",
+        },
+        // Add more animals as needed
+      ];
+
+      // Utility function to build an animal card
+      function buildAnimalCard(imageSrc, altText, title, description) {
+        return `
+          <div class="card">
+            <img src="${imageSrc}" alt="${altText}" />
+            <div class="card-text">
+              <h3>${title}</h3>
+              <p>${description}</p>
+            </div>
+          </div>`;
+      }
+
+      // Utility function to build the header
+      function buildHeader() {
+        return `
+          <header>
+            <a href="#">Logo</a>
+          </header>`;
+      }
+
+      // Utility function to build the left navigation pane
+      function buildLeftNav() {
+        return `
+          <nav>
+              <ul>
+                  <li>Home</li>
+                  <li>Page 1</li>
+                  <li>Page 2</li>
+              </ul>
+          </nav>`;
+      }
+
+      // Utility function to build the body (animal cards)
+      function buildBody(offset, count) {
+       
+
+        const startIndex = offset;
+        const endIndex = offset + count;
+
+        console.log(startIndex, endIndex, animalData.length)
+
+        if (startIndex < 0 || endIndex > animalData.length) {
+          return `<p>Error: Invalid offset or count values. Please check the query string.</p>`;
+        }
+
+        const animalCards = [];
+        for (let i = startIndex; i < endIndex; i++) {
+          animalCards.push(
+            buildAnimalCard(
+              animalData[i].imageSrc,
+              animalData[i].altText,
+              animalData[i].title,
+              animalData[i].description
+            )
+          );
+        }
+
+        return animalCards.join("");
+      }
+
+      // Utility function to build the footer
+      function buildFooter() {
+        return `
+          <footer>
+            <ul>
+              <li>Contact</li>
+              <li>About</li>
+              <li>Privacy</li>
+            </ul>
+          </footer>`;
+      }
+
+      // Utility function to build the site layout
+      function buildSiteLayout(offset, count) {
+        const header = buildHeader();
+        const leftNav = buildLeftNav();
+        const body = buildBody(offset, count);
+        const footer = buildFooter();
+
+        return `
+          ${header}
+          <article class="page-container">
+            ${leftNav}
+            <section class="main-container">
+              ${body}
+            </section>
+          </article>
+          ${footer}
+        `;
+      }
+
+      // Get query parameters for offset and count
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      const offset = parseInt(params.offset) || 0;
+      const count = parseInt(params.count) || 0;
+
+      // Build and display the website content
+      document.body.innerHTML = buildSiteLayout(offset, count);
+    </script>
+  </body>
+</html>
