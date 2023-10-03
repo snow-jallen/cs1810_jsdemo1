@@ -11,7 +11,7 @@ const getCountFromQuery = () => {
     );
   }
   else {
-    return 5;
+    return animals.length;
   }
 }
 
