@@ -1,3 +1,4 @@
+import {animals} from './animals.js'
 
 const getCountFromQuery = () => {
   const queryString = window.location.search
